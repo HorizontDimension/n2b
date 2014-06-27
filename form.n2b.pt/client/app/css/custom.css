@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'helvetica';
+    src: url('/app/fonts/HelveticaNeue-Light.eot?') format('eot'),
+    url('/app/fonts/HelveticaNeue-Light.otf')  format('opentype'),
+    url('/app/fonts/HelveticaNeue-Light.woff') format('woff'),
+    url('/app/fonts/HelveticaNeue-Light.ttf')  format('truetype'),
+    url('/app/fonts/HelveticaNeue-Light.svg#HelveticaNeue-Light') format('svg');
+}
+
+body{
+    font-family: helvetica, arial, sans-serif;
+    padding-top: 60px;
+}
+
+.menu{
+    margin-top: 8px;
+}
+
+.navbar-inverse {
+    border: none;
+    background-color: #222222;
+}
+
+.navbar-toggle{
+    margin-top: 18px;
+}
+
+.nav > li > a {
+    outline: none;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.nav > li > a:hover {
+    color: dodgerblue !important;
+    border-bottom-color: dodgerblue;
+    background: white !important;
+}
+
+.active {
+    color: dodgerblue !important;
+    border-bottom: 4px solid dodgerblue !important;
+    background: white !important;
+}
+
+.nav > li > a > h4 {
+    font-family: helvetica;
+    letter-spacing:3px;
+    display: inline;
+    vertical-align: middle;
+}
+
+.round-circle {
+    height: 36px;
+    width: 36px;
+    display: inline-block;
+    border: 2px solid dodgerblue;
+    color: #999;
+    border-radius: 18px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.title{
+    color: #999;
+    background-color: #101010;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 0;
+    border-bottom: 2px solid dodgerblue;
+}
+
+.box{
+    border-radius: 5px;
+    border: 2px solid dodgerblue;
+    background: url("app/img/tweed.png") repeat;
+}
+
+.fileinput .form-control {
+    white-space: pre !important;
+}
+
+
+@media (max-width: 767px){
+
+    .visible-xs {
+        display: inline !important;
+    }
+
+}
+
+@media (max-width: 318px){
+
+    .visible-xs{
+        display: none !important;
+    }
+
+}
+
+footer{
+    background-color: #222222;
+    width: 100%;
+    text-align: center;
+    position:absolute;
+    bottom:0;
+    color: dodgerblue;
+}

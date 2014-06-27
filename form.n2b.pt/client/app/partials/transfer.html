@@ -1,0 +1,51 @@
+<form name="transfer" class="form-horizontal" role="form">
+    <div class="box col-sm-12">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <h4 class="title text-center">TRANSFERÊNCIA DE AGENTE</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="atual-agente-nome" class="col-sm-3 control-label">Nome do Agente Atual</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="atual-agente-nome" placeholder="Nome do Agente Atual">
+            </div>
+            <label for="atual-agente-nif" class="col-sm-1 control-label">NIF</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="atual-agente-nif" placeholder="NIF">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="novo-agente-nome" class="col-sm-3 control-label">Nome do Novo Agente</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="novo-agente-nome" placeholder="Nome Novo Agente">
+            </div>
+            <label for="novo-agente-nif" class="col-sm-1 control-label">NIF</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="novo-agente-nif" placeholder="NIF">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hardlock" class="col-sm-3 control-label">Hardlock a Transferir</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" rows="3" id="hardlock" placeholder="Hardlock a Transferir"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="declaracao" class="col-sm-3 control-label">Declaração do Cliente</label>
+            <div class="col-sm-8">
+                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                    <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div>
+                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Declaração</span><span class="fileinput-exists">Alterar Declaração</span><input id="declaracao" type="file" name=""></span>
+                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover Declaração</a>
+                </div>
+            </div>
+        </div>
+        <div re-captcha ng-model="user.captcha"></div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" ng-disabled="transfer.$invalid" class="btn btn-default">Enviar Tranferência</button>
+            </div>
+        </div>
+    </div>
+</form>

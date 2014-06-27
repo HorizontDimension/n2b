@@ -1,0 +1,40 @@
+<form class="form-horizontal" role="form">
+    <div class="box col-sm-12">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <h4 class="title text-center">UPGRADE DE CONCORRÊNCIA</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Nome do Agente</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="name" placeholder="Nome do Agente">
+            </div>
+            <label for="nif" class="col-sm-1 control-label">NIF</label>
+            <div class="col-sm-2">
+                <input type="tel" class="form-control" id="nif" placeholder="NIF">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="software" class="col-sm-3 control-label">Software Substituído</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" rows="3" id="software" placeholder="Software Substituído"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="comprovativo" class="col-sm-3 control-label">Comprovativo</label>
+            <div class="col-sm-6">
+                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                    <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div>
+                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Comprovativo</span><span class="fileinput-exists">Alterar Comprovativo</span><input id="comprovativo" type="file" name=""></span>
+                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover Comprovativo</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-default">Enviar Upgrade</button>
+            </div>
+        </div>
+    </div>
+</form>
