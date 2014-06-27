@@ -14,7 +14,7 @@ body{
 }
 
 .menu{
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 .navbar-inverse {
@@ -47,29 +47,29 @@ body{
     background: white !important;
 }
 
-.nav > li > a > h4 {
+.nav > li > a > h5 {
     font-family: helvetica;
-    letter-spacing:3px;
+    letter-spacing:2px;
     display: inline;
-    vertical-align: middle;
 }
 
 .round-circle {
-    height: 36px;
-    width: 36px;
+    height: 30px;
+    width: 30px;
     display: inline-block;
     border: 2px solid dodgerblue;
     color: #999;
-    border-radius: 18px;
+    border-radius: 15px;
     text-align: center;
     margin-right: 10px;
 }
 
 .title{
-    color: #2e2e2e;
-    background-color: darkgrey;
+    color: #222222;
+    background-color: #ffffff;
     margin: 0 -15px 30px -15px;
     padding: 10px;
+    border-bottom: 4px solid dodgerblue;
 }
 
 .box{
