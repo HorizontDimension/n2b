@@ -10,6 +10,7 @@
 body{
     font-family: helvetica, arial, sans-serif;
     padding-top: 60px;
+    background-color: #f9f9f9;
 }
 
 .menu{
@@ -65,27 +66,31 @@ body{
 }
 
 .title{
-    color: #999;
-    background-color: #101010;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    color: #2e2e2e;
+    background-color: darkgrey;
+    margin: 0 -15px 30px -15px;
     padding: 10px;
-    margin-left: -15px;
-    margin-right: -15px;
-    margin-top: 0;
-    border-bottom: 2px solid dodgerblue;
 }
 
 .box{
+    padding-bottom: 30px;
+    padding-top: 30px;
     border-radius: 5px;
     border: 2px solid dodgerblue;
-    background: url("app/img/tweed.png") repeat;
+    background: url("/app/img/navy_blue.png") repeat;
 }
 
 .fileinput .form-control {
     white-space: pre !important;
 }
 
+input [type="text"] {
+    border: 1px solid dodgerblue;
+}
+
+label{
+    color: darkgrey;
+}
 
 @media (max-width: 767px){
 
