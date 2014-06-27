@@ -79,7 +79,7 @@ body{
 .box{
     border-radius: 5px;
     border: 2px solid dodgerblue;
-    background: url("app/img/tweed.png") repeat;
+    background: url("/app/img/white_carbonfiber.png") repeat;
 }
 
 .fileinput .form-control {
