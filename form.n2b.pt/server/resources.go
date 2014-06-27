@@ -4,6 +4,8 @@ import (
 	"github.com/emicklei/go-restful"
 	//"github.com/emicklei/go-restful/swagger"
 	"github.com/gorilla/schema"
+	//"io/ioutil"
+	"log"
 	"net/http"
 	//"github.com/jordan-wright/email"
 )
@@ -19,7 +21,7 @@ func (t *TransferAgentResource) Register(container *restful.Container) {
 		Consumes("application/x-www-form-urlencoded").
 		Produces(restful.MIME_JSON) // you can specify this per route as well
 
-	ws.Route(ws.GET("/new").To(t.TransferAgent).
+	ws.Route(ws.POST("/new").To(t.TransferAgent).
 		// docs
 		Doc("Submit a request for agent transfer ").
 		Operation("TransferAgent"))
@@ -29,6 +31,8 @@ func (t *TransferAgentResource) Register(container *restful.Container) {
 }
 
 func (t *TransferAgentResource) TransferAgent(request *restful.Request, response *restful.Response) {
+	//err, _ := ioutil.ReadAll(request.Request)
+	log.Println(request.Request.PostForm)
 
 	at := new(AgentTransfer)
 	err := decoder.Decode(at, request.Request.PostForm)
@@ -48,7 +52,7 @@ func (t *UpgradeAgentResource) Register(container *restful.Container) {
 		Consumes("application/x-www-form-urlencoded").
 		Produces(restful.MIME_JSON) // you can specify this per route as well
 
-	ws.Route(ws.GET("/new").To(t.UpgradeAgent).
+	ws.Route(ws.POST("/new").To(t.UpgradeAgent).
 		// docs
 		Doc("Submit a request for agent transfer ").
 		Operation("TransferAgent"))

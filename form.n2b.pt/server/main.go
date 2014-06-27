@@ -13,6 +13,12 @@ func main() {
 
 	ta.Register(wsContainer)
 	ua.Register(wsContainer)
+	cors := restful.CrossOriginResourceSharing{
+		ExposeHeaders:  []string{"X-My-Header"},
+		AllowedHeaders: []string{"Content-Type"},
+		CookiesAllowed: false,
+		Container:      wsContainer}
+	wsContainer.Filter(cors.Filter)
 
 	// Optionally, you can install the Swagger Service which provides a nice Web UI on your REST API
 	// You need to download the Swagger HTML5 assets and change the FilePath location in the config below.

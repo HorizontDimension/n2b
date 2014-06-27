@@ -1,8 +1,8 @@
 package main
 
 type AgentTransfer struct {
-	OldName  string
-	NewName  string
+	OldName  string `schema:"OldName"`
+	NewName  string `schema:"NewName"`
 	OldNif   string
 	NewNif   string
 	Hardlock string
