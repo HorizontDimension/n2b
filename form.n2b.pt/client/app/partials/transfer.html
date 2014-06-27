@@ -44,8 +44,9 @@
         <div re-captcha ng-model="user.captcha"></div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" ng-disabled="transfer.$invalid" class="btn btn-default">Enviar Tranferência</button>
+                <button type="submit" ng-click="Submit(agent)" class="btn btn-default">Enviar Tranferência</button>
             </div>
         </div>
+        {{agent}}
     </div>
 </form>
