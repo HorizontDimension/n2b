@@ -1,18 +1,28 @@
 package main
 
 import (
+	"github.com/HorizontDimension/n2b/form.n2b.pt/server/resources"
 	"github.com/emicklei/go-restful"
+	"labix.org/v2/mgo"
 	"log"
 	"net/http"
 )
 
 func main() {
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
 	wsContainer := restful.NewContainer()
-	ta := &TransferAgentResource{}
-	ua := &UpgradeAgentResource{}
+	ta := &resources.TransferAgentResource{session}
+	ua := &resources.UpgradeAgentResource{}
+	files := &resources.File{session}
 
 	ta.Register(wsContainer)
 	ua.Register(wsContainer)
+	files.Register(wsContainer)
+
 	cors := restful.CrossOriginResourceSharing{
 		ExposeHeaders:  []string{"X-My-Header"},
 		AllowedHeaders: []string{"Content-Type"},
