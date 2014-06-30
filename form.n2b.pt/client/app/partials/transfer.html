@@ -2,7 +2,7 @@
     <div class="box col-sm-12">
         <div class="form-group">
             <div class="col-sm-12">
-                <h5 class="title text-center">TRANSFERÊNCIA DE AGENTE</h5>
+                <h4 class="title text-center">TRANSFERÊNCIA DE AGENTE</h4>
             </div>
         </div>
         <div class="form-group">
@@ -33,20 +33,43 @@
         </div>
         <div class="form-group">
             <label for="declaracao" class="col-sm-3 control-label">Declaração do Cliente</label>
-            <div class="col-sm-8">
+            <div class="col-sm-8" ng-file-over>
                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                     <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div>
-                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar</span><span class="fileinput-exists">Alterar</span><input id="declaracao" type="file" name=""  ng-model="agent.Proof"></span>
-                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Declaração</span><span class="fileinput-exists">Alterar Declaração</span><input id="declaracao" type="file"  name="Proof" ng-file-select   ng-model="agent.Proof"></span>
+                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover Declaração</a>
                 </div>
             </div>
         </div>
         <div re-captcha ng-model="user.captcha"></div>
+
+
+        <div class="form-group" ng-show="uploader.queue.length">
+            <label  class="col-sm-3 control-label">Progress</label>
+            <div class="col-sm-8">
+                <div class="progress" style="">
+                    <div class="progress-bar"  role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10">
-                <button type="submit" ng-click="Submit(agent)" class="btn btn-default">Enviar Tranferência</button>
+                <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                    <span class="glyphicon glyphicon-upload"></span> Enviar
+                </button>
+                <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                </button>
+                <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                </button>
             </div>
         </div>
         {{agent}}
+
+
     </div>
+
+
 </form>
