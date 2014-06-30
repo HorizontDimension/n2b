@@ -8,9 +8,9 @@
 }
 
 body{
-    font-family: helvetica, arial, sans-serif;
+    font-family: 'helvetica', arial, sans-serif;
     padding-top: 60px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 .menu{
@@ -30,7 +30,7 @@ body{
 }
 
 .navbar-toggle{
-    margin-top: 18px;
+    margin-top: 8px;
 }
 
 .nav > li > a {
@@ -55,9 +55,13 @@ body{
 }
 
 .nav > li > a > h5 {
-    font-family: helvetica;
+    font-family: 'helvetica', arial , sans-serif;
     letter-spacing:2px;
     display: inline;
+}
+
+.navbar-nav > li > a {
+    padding: 8px;
 }
 
 .round-circle {
@@ -72,11 +76,11 @@ body{
 }
 
 .title{
-    color: #222222;
-    background-color: #ffffff;
+    color: darkgrey;
     margin: 0 -15px 30px -15px;
     padding: 10px;
-    border-bottom: 4px solid dodgerblue;
+    letter-spacing: 2px;
+    font-family: 'helvetica';
 }
 
 .box{
@@ -89,10 +93,6 @@ body{
 
 .fileinput .form-control {
     white-space: pre !important;
-}
-
-input [type="text"] {
-    border: 1px solid dodgerblue;
 }
 
 label{
