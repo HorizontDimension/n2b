@@ -6,6 +6,9 @@ angular.module('myApp.controllers', [])
     .controller('MyCtrl1', ['$scope', 'Transfers', function ($scope) {
 
     }])
+    .controller('acerca', ['$scope', 'Transfers', function ($scope) {
+
+    }])
     .controller('contacts', ['$scope', 'Transfers', function ($scope) {
 
     }])
