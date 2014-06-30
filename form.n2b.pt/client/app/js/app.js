@@ -17,7 +17,7 @@ config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/contacts', {templateUrl: '/app/partials/contacts.html', controller: 'contacts'});
     $routeProvider.when('/upgrade', {templateUrl: '/app/partials/upgrade.html', controller: 'MyCtrl1'});
     $routeProvider.when('/transfer', {templateUrl: '/app/partials/transfer.html', controller: 'MyCtrl2'});
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/acerca'});
 }]).config(function (reCAPTCHAProvider) {
         // required: please use your own key :)
         reCAPTCHAProvider.setPublicKey('---KEY---');
