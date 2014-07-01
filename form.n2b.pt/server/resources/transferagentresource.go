@@ -64,7 +64,7 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 		log.Println("error GettingFile from request")
 	}
 
-	err = models.AddIFile(t.Session, fileheader, atr.Proof)
+	err = models.AddFile(t.Session, fileheader, atr.Proof)
 	if err != nil {
 		log.Println(err)
 	}

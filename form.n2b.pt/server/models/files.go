@@ -14,7 +14,7 @@ func FilesFs(s *mgo.Session) *mgo.GridFS {
 }
 
 //Session must be closed outside this func
-func AddIFile(s *mgo.Session, fhs *multipart.FileHeader, fileId bson.ObjectId) error {
+func AddFile(s *mgo.Session, fhs *multipart.FileHeader, fileId bson.ObjectId) error {
 	//iterate over multiapartFileHeader
 	f, err := fhs.Open()
 	if err != nil {
