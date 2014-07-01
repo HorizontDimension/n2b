@@ -23,6 +23,9 @@ angular.module('myApp.controllers', [])
         }
 
     }])
+    .controller('login', ['$scope', 'Transfers', function ($scope) {
+
+    }])
     .controller('MyCtrl2', ['$scope','Transfers','$fileUploader',  function ($scope, Transfers,$fileUploader) {
         $scope.agent = {};
 

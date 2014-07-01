@@ -42,12 +42,15 @@
                 <li><a id="contacts" ng-class="getClass('/contactos')"  href="#/contactos "><div class="round-circle"><span class="menu glyphicon glyphicon-envelope"></span></div><h5>CONTACTOS</h5></a></li>
                 <li><a id="upgrade" ng-class="getClass('/upgrade')"  href="#/upgrade"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>UPGRADE</h5></a></li>
                 <li><a id="transfer" ng-class="getClass('/transfer')"  href="#/transfer"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>TRANSFERÊNCIA</h5></a></li>
+                <li><a id="login" ng-class="getClass('/login')"  href="#/login"><div class="round-circle"><span class="menu glyphicon glyphicon-lock"></span></div><h5>LOGIN</h5></a></li>
             </ul>
         </div>
     </nav>
 </header>
 <div>
-    <div class="container" style="position: inherit; margin-top: 50px;" ng-view></div>
+    <div class="container" style="position: inherit; margin-top: 50px;">
+        <div class="row" ng-view></div>
+    </div>
 </div>
 <footer>
     <h5>N2B - TODOS OS DIREITOS RESERVADOS.</h5>
