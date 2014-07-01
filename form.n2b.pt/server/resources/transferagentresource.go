@@ -42,14 +42,21 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 	}
 	form := request.Request.Form
 
-	at := new(models.AgentTransfer)
-	at.Hardlock = form.Get("Hardlock")
-	at.NewName = form.Get("NewName")
-	at.OldName = form.Get("OldName")
-	at.NewNif = form.Get("NewNif")
-	at.OldNif = form.Get("OldNif")
+	atr := &models.AgentTransferRequest{
+		Id:       bson.NewObjectId(),
+		Hardlock: form.Get("Hardlock"),
+		Proof:    bson.NewObjectId(),
+		OldAgent: models.Agent{
+			Name: form.Get("OldName"),
+			Nif:  form.Get("OldNif"),
+		},
+		NewAgent: models.Agent{
+			Name: form.Get("OldName"),
+			Nif:  form.Get("OldNif"),
+		},
+	}
 
-	at.Validate()
+	atr.Validate()
 
 	_, fileheader, err := request.Request.FormFile("file")
 
@@ -57,24 +64,18 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 		log.Println("error GettingFile from request")
 	}
 
-	fileId := bson.NewObjectId()
-
-	at.Proof = fileId
-
-	err = models.AddImage(t.Session, fileheader, fileId)
+	err = models.AddIFile(t.Session, fileheader, atr.Proof)
 	if err != nil {
 		log.Println(err)
 	}
 
-	recordId := bson.NewObjectId()
-	at.Id = recordId
-	at.Save(t.Session)
+	atr.Save(t.Session)
 
 	// Create a new template and parse the letter into it.
 	template := template.Must(template.New("transfer").Parse(TransferAgentTemplate))
 
 	buf := new(bytes.Buffer)
-	err = template.Execute(buf, at)
+	err = template.Execute(buf, atr)
 	if err != nil {
 		log.Println(err)
 	}
@@ -82,10 +83,7 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 	e := email.NewEmail()
 	e.From = "IT Department <it@euroneves.pt>"
 	e.To = []string{"it@euroneves.pt"}
-	//e.Bcc = []string{"test_bcc@example.com"}
-	//e.Cc = []string{"test_cc@example.com"}
 	e.Subject = "Solicitação de Transferência de Agente |N2B – International, Lda. |"
-	//e.Text = []byte("Text Body is, of course, supported!")
 	e.Text = buf.Bytes()
 	err = e.Send("webmail.euroneves.pt:587", smtp.PlainAuth("", "it@euroneves.pt", "##Hd2013", "webmail.euroneves.pt"))
 	if err != nil {
@@ -97,12 +95,12 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 const TransferAgentTemplate = `
 
 Assunto: Solicitação de Transferência de Agente |N2B – International, Lda. |
-Anexo: http://192.168.10.110:8080/files/{{.Proof.Hex}}
-Mensagem: Venho por este meio Solicitar que os Hardlocks {{.Hardlock}} sejam transferidos do Agente {{.OldName}} com o NIF: {{.OldNif}} para o Agente {{.NewName}} com o NIF: {{.NewNif}} conforme declaração do
+Anexo: http://localhost:8080/files/{{.Proof.Hex}}
+Mensagem: Venho por este meio Solicitar que os Hardlocks {{.Hardlock}} sejam transferidos do Agente {{.OldAgent.Name}} com o NIF: {{.OldAgent.Nif}} para o Agente {{.NewAgent.Name}} com o NIF: {{.NewAgent.Nif}} conforme declaração do
 cliente em anexo.
 Atentamente
-{{.NewName}},
-{{.NewNif}}
+{{.NewAgent.Name}},
+{{.NewAgent.Nif}}
 
 Para Futura Referencia utilize este número {{.Id.Hex}}
 `

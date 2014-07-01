@@ -14,7 +14,7 @@ func FilesFs(s *mgo.Session) *mgo.GridFS {
 }
 
 //Session must be closed outside this func
-func AddImage(s *mgo.Session, fhs *multipart.FileHeader, fileId bson.ObjectId) error {
+func AddIFile(s *mgo.Session, fhs *multipart.FileHeader, fileId bson.ObjectId) error {
 	//iterate over multiapartFileHeader
 	f, err := fhs.Open()
 	if err != nil {
@@ -35,7 +35,7 @@ func AddImage(s *mgo.Session, fhs *multipart.FileHeader, fileId bson.ObjectId) e
 
 	//please handle error ws notification
 	if err != nil {
-		twiit.Log.Error("Failed to encode image", "error", err)
+		twiit.Log.Error("Failed to copy image do gridfile", "error", err)
 
 		return err
 	}

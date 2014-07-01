@@ -36,12 +36,12 @@
                 </h3>
             </a>
         </div>
-        <div class="collapse navbar-collapse" id="collapse">
+        <div class="collapse navbar-collapse" id="collapse" ng-controller="menu">
             <ul class="nav navbar-nav" handle-Clickedlinks>
-                <li><a id="about" class="active" href="#/acerca"><div class="round-circle"><span class="menu glyphicon glyphicon-paperclip"></span></div><h5>ACERCA</h5></a></li>
-                <li><a id="contacts" href="#/contacts"><div class="round-circle"><span class="menu glyphicon glyphicon-envelope"></span></div><h5>CONTACTOS</h5></a></li>
-                <li><a id="upgrade" href="#/upgrade"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>UPGRADE</h5></a></li>
-                <li><a id="transfer" href="#/transfer"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>TRANSFERÊNCIA</h5></a></li>
+                <li><a id="about" ng-class="getClass('/acerca')" href="#/acerca"><div class="round-circle"><span class="menu glyphicon glyphicon-paperclip"></span></div><h5>ACERCA</h5></a></li>
+                <li><a id="contacts" ng-class="getClass('/contactos')"  href="#/contactos "><div class="round-circle"><span class="menu glyphicon glyphicon-envelope"></span></div><h5>CONTACTOS</h5></a></li>
+                <li><a id="upgrade" ng-class="getClass('/upgrade')"  href="#/upgrade"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>UPGRADE</h5></a></li>
+                <li><a id="transfer" ng-class="getClass('/transfer')"  href="#/transfer"><div class="round-circle"><span class="menu glyphicon glyphicon-pencil"></span></div><h5>TRANSFERÊNCIA</h5></a></li>
             </ul>
         </div>
     </nav>
@@ -72,18 +72,6 @@
     <script src="js/directives.js"></script>
     <script>
 
-    //this function will add/remove active class to menu item, which is triggered by click event.
-    var menu = $('.nav > li > a'); //array of all 'a' tags is stored in menu variable
-
-    $(menu.click(function(){
-        for(var i = 0; i < menu.length; i++){
-             if('#'+menu[i].id == this.getAttribute('href') && this.className != 'active'){
-                $(this).addClass('active');
-             }else{
-                $(menu[i]).removeClass('active');
-             }
-        }
-    }));
 
 </script>
 </body>

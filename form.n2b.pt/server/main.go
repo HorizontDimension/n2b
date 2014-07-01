@@ -24,7 +24,7 @@ func main() {
 	files.Register(wsContainer)
 
 	cors := restful.CrossOriginResourceSharing{
-		ExposeHeaders:  []string{"X-My-Header"},
+		ExposeHeaders:  []string{"X-N2B"},
 		AllowedHeaders: []string{"Content-Type"},
 		CookiesAllowed: false,
 		Container:      wsContainer}
