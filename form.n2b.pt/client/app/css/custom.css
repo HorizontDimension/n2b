@@ -170,3 +170,14 @@ label{
     padding-bottom: 50px;
     padding-top: 150px;
 }
+
+.validation-error{
+    color: red;
+}
+
+p{
+    letter-spacing: 1px;
+    line-height: 1.5em;
+    text-align:justify;
+    text-justify:inter-word;
+}

@@ -46,18 +46,12 @@
             <div class="col-sm-8" ng-file-over>
                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                     <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div>
-<<<<<<< HEAD
                     <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar</span><span class="fileinput-exists">Alterar</span><input id="declaracao" type="file"  name="Proof" ng-file-select   ng-model="agent.Proof"></span>
                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-=======
-                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Declaração</span><span class="fileinput-exists">Alterar Declaração</span><input id="declaracao" type="file"  name="Proof" ng-file-select valid-file  ng-model="agent.Proof" required></span>
-                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover Declaração</a>
->>>>>>> 2a6f8214819ef90e7e1d284f6957477ec7c5bee6
                 </div>
                 <small class="validation-error" ng-show="Transfer.Proof.$invalid && Transfer.Proof.$error.required && submitted">Campo obrigatório</small>
             </div>
         </div>
-
         <div re-captcha ng-model="user.captcha"></div>
         <div class="form-group" ng-show="uploader.queue.length">
             <label  class="col-sm-3 control-label">Progress</label>
@@ -74,13 +68,7 @@
                 </button>
             </div>
         </div>
-<<<<<<< HEAD
         {{agent}}
-=======
        <div class="text-center" style="color: green"> {{success}}</div>
-
-
-
->>>>>>> 2a6f8214819ef90e7e1d284f6957477ec7c5bee6
     </div>
 </form>
