@@ -1,4 +1,4 @@
-<form name="transfer" class="form-horizontal" role="form">
+<form name="Transfer"  qn-validate="errors" class="form-horizontal" role="form" ng-submit="submit()" novalidate>
     <div class="box col-sm-12">
         <div class="form-group">
             <div class="col-sm-12">
@@ -8,27 +8,37 @@
         <div class="form-group">
             <label for="atual-agente-nome" class="col-sm-3 control-label">Nome do Agente Atual</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="atual-agente-nome" placeholder="Nome do Agente Atual" ng-model="agent.OldName">
+                <input type="text" class="form-control" id="atual-agente-nome"  placeholder="Nome do Agente Atual" name="OldName" ng-model="agent.OldName" required>
+                <small class="validation-error" ng-show=" Transfer.OldName.$invalid && Transfer.OldName.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Transfer.$serverError.EmptyOldAgentName.$invalid">Campo obrigatório</small>
             </div>
             <label for="atual-agente-nif" class="col-sm-1 control-label">NIF</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" id="atual-agente-nif" placeholder="NIF" ng-model="agent.OldNif">
+                <input type="text" class="form-control" id="atual-agente-nif" name="OldNif" placeholder="NIF" ng-model="agent.OldNif" required>
+                 <small class="validation-error" ng-show="Transfer.OldNif.$invalid && Transfer.OldNif.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Transfer.$serverError.EmptyOldAgentNif.$invalid">Campo obrigatório</small>
             </div>
         </div>
         <div class="form-group">
             <label for="novo-agente-nome" class="col-sm-3 control-label">Nome do Novo Agente</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="novo-agente-nome" placeholder="Nome Novo Agente" ng-model="agent.NewName">
+                <input type="text" class="form-control" id="novo-agente-nome" placeholder="Nome Novo Agente" name="NewName" ng-model="agent.NewName" required>
+                <small class="validation-error" ng-show="Transfer.NewName.$invalid && Transfer.NewName.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Transfer.$serverError.EmptyNewAgentName.$invalid">Campo obrigatório</small>
             </div>
             <label for="novo-agente-nif" class="col-sm-1 control-label">NIF</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" id="novo-agente-nif" placeholder="NIF" ng-model="agent.NewNif">
+                <input type="text" class="form-control" id="novo-agente-nif" placeholder="NIF" name="NewNif" ng-model="agent.NewNif" required>
+                <small class="validation-error" ng-show="Transfer.NewNif.$invalid && Transfer.NewNif.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Transfer.$serverError.EmptyNewAgentNif.$invalid">Campo obrigatório</small>
             </div>
         </div>
         <div class="form-group">
             <label for="hardlock" class="col-sm-3 control-label">Hardlock a Transferir</label>
             <div class="col-sm-8">
-                <textarea class="form-control" rows="3" id="hardlock" placeholder="Hardlock a Transferir"  ng-model="agent.Hardlock"></textarea>
+                <textarea class="form-control" rows="3" id="hardlock" placeholder="Hardlock a Transferir" name="Hardlock" ng-model="agent.Hardlock" required></textarea>
+                <small class="validation-error" ng-show="Transfer.Hardlock.$invalid && Transfer.Hardlock.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Transfer.$serverError.EmptyHardlock.$invalid"></small>
             </div>
         </div>
         <div class="form-group">
@@ -36,11 +46,13 @@
             <div class="col-sm-8" ng-file-over>
                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                     <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div>
-                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Declaração</span><span class="fileinput-exists">Alterar Declaração</span><input id="declaracao" type="file"  name="Proof" ng-file-select   ng-model="agent.Proof"></span>
+                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selecionar Declaração</span><span class="fileinput-exists">Alterar Declaração</span><input id="declaracao" type="file"  name="Proof" ng-file-select valid-file  ng-model="agent.Proof" required></span>
                     <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover Declaração</a>
                 </div>
+                <small class="validation-error" ng-show="Transfer.Proof.$invalid && Transfer.Proof.$error.required && submitted">Campo obrigatório</small>
             </div>
         </div>
+
         <div re-captcha ng-model="user.captcha"></div>
         <div class="form-group" ng-show="uploader.queue.length">
             <label  class="col-sm-3 control-label">Progress</label>
@@ -52,12 +64,13 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10">
-                <button type="button" class="btn btn-default" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                <button type="submit" class="btn btn-default" ng-click="submit()">
                     <span class="glyphicon glyphicon-upload"></span> Enviar
                 </button>
             </div>
         </div>
-        {{agent}}
+       <div class="text-center" style="color: green"> {{success}}</div>
+
 
 
     </div>

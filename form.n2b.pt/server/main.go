@@ -42,9 +42,7 @@ func main() {
 	//	SwaggerPath:     "/apidocs/",
 	//	SwaggerFilePath: "/Users/emicklei/xProjects/swagger-ui/dist"}
 	//swagger.RegisterSwaggerService(config, wsContainer)
-
 	log.Printf("start listening on localhost:8080")
 	server := &http.Server{Addr: ":8080", Handler: wsContainer}
 	log.Fatal(server.ListenAndServe())
-
 }

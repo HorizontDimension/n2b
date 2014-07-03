@@ -139,3 +139,7 @@ footer {
 .login-input-text {
     margin: 25px 25px 15px 25px;
 }
+
+.validation-error{
+    color: red;
+}

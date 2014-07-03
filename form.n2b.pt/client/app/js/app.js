@@ -6,7 +6,7 @@ angular.module('myApp', [
   'ngRoute',
   'angularFileUpload',
   'ngResource',
-  'reCAPTCHA',
+  'vcRecaptcha',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -19,12 +19,4 @@ config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/transfer', {templateUrl: '/app/partials/transfer.html', controller: 'MyCtrl2'});
     $routeProvider.when('/login', {templateUrl: '/app/partials/login.html', controller: 'login'});
     $routeProvider.otherwise({redirectTo: '/acerca'});
-}]).config(function (reCAPTCHAProvider) {
-        // required: please use your own key :)
-        reCAPTCHAProvider.setPublicKey('---KEY---');
-
-        // optional: gets passed into the Recaptcha.create call
-        reCAPTCHAProvider.setOptions({
-            theme: 'clean'
-        });
-    });
+}]);
