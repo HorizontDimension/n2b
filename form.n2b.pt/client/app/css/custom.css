@@ -1,34 +1,16 @@
 @font-face {
     font-family: 'helvetica';
-    src: url('/app/fonts/HelveticaNeue-Light.eot?') format('eot'),
-    url('/app/fonts/HelveticaNeue-Light.otf')  format('opentype'),
-    url('/app/fonts/HelveticaNeue-Light.woff') format('woff'),
-    url('/app/fonts/HelveticaNeue-Light.ttf')  format('truetype'),
-    url('/app/fonts/HelveticaNeue-Light.svg#HelveticaNeue-Light') format('svg');
+    src: url('/fonts/HelveticaNeue-Light.eot?') format('eot'),
+    url('/fonts/HelveticaNeue-Light.otf')  format('opentype'),
+    url('/fonts/HelveticaNeue-Light.woff') format('woff'),
+    url('/fonts/HelveticaNeue-Light.ttf')  format('truetype'),
+    url('/fonts/HelveticaNeue-Light.svg#HelveticaNeue-Light') format('svg');
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    position: relative;
-    margin: 0;
-    padding-bottom: 4rem;
-    min-height: 100%;
+body{
     font-family: 'helvetica', arial, sans-serif;
+    padding-top: 60px;
     background-color: #ffffff;
-}
-
-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    background-color: #222222;
-    color: dodgerblue;
-    text-align: center;
 }
 
 .menu{
@@ -106,7 +88,7 @@ footer {
     padding-top: 30px;
     border-radius: 5px;
     border: 2px solid dodgerblue;
-    background: url("/app/img/navy_blue.png") repeat;
+    background: url("/img/navy_blue.png") repeat;
 }
 
 .fileinput .form-control {
@@ -121,23 +103,6 @@ label{
 
     .visible-xs {
         display: inline !important;
-    }
-
-    body{
-        background: url("/app/img/navy_blue.png") repeat;
-    }
-
-    .box{
-        border-radius: 0;
-        border: none;
-        background: none;
-        padding-left: -15px !important;
-        padding-right: -15px !important;
-    }
-
-    .container{
-        padding-bottom: 20px !important;
-        padding-top: 70px !important;
     }
 
 }
@@ -158,6 +123,15 @@ label{
 
 }
 
+footer {
+    background-color: #222222;
+    width: 100%;
+    text-align: center;
+    position:absolute;
+    bottom:0;
+    color: dodgerblue;
+}
+
 .glyphicon-x4 {
     font-size: 4em;
 }
@@ -166,18 +140,6 @@ label{
     margin: 25px 25px 15px 25px;
 }
 
-.container{
-    padding-bottom: 50px;
-    padding-top: 150px;
-}
-
 .validation-error{
     color: red;
-}
-
-p{
-    letter-spacing: 1px;
-    line-height: 1.5em;
-    text-align:justify;
-    text-justify:inter-word;
 }

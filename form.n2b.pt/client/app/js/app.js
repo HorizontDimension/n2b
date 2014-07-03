@@ -13,10 +13,10 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/acerca', {templateUrl: '/app/partials/acerca.html', controller: 'acerca'});
-    $routeProvider.when('/contactos', {templateUrl: '/app/partials/contacts.html', controller: 'contacts'});
-    $routeProvider.when('/upgrade', {templateUrl: '/app/partials/upgrade.html', controller: 'MyCtrl1'});
-    $routeProvider.when('/transfer', {templateUrl: '/app/partials/transfer.html', controller: 'MyCtrl2'});
-    $routeProvider.when('/login', {templateUrl: '/app/partials/login.html', controller: 'login'});
+    $routeProvider.when('/acerca', {templateUrl: '/partials/acerca.html', controller: 'acerca'});
+    $routeProvider.when('/contactos', {templateUrl: '/partials/contacts.html', controller: 'contacts'});
+    $routeProvider.when('/upgrade', {templateUrl: '/partials/upgrade.html', controller: 'MyCtrl1'});
+    $routeProvider.when('/transfer', {templateUrl: '/partials/transfer.html', controller: 'MyCtrl2'});
+    $routeProvider.when('/login', {templateUrl: '/partials/login.html', controller: 'login'});
     $routeProvider.otherwise({redirectTo: '/acerca'});
 }]);

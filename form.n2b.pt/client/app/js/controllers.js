@@ -39,7 +39,7 @@ angular.module('myApp.controllers', [])
         // create a uploader with options
         var uploader = $scope.uploader = $fileUploader.create({
             scope: $scope,                          // to automatically update the html. Default: $rootScope
-            url: 'http://localhost:8080/transfers/new',
+            url: 'http://n2b.go.euroneves.pt/transfers/new',
             formData:[ $scope.agent],
             queueLimit:1,
             filters: [

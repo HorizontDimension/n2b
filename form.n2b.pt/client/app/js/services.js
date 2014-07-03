@@ -7,7 +7,7 @@
 // In this case it is a simple value service.
 angular.module('myApp.services', []).
   value('version', '0.1').factory('Transfers', function($resource){
-        var resource = $resource('http://localhost:8080/transfers/new',{},{
+        var resource = $resource('http://n2b.go.euroneves.pt/transfers/new',{},{
             new:{
                 method:"POST",
                 isArray:false,
