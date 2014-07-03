@@ -1,10 +1,13 @@
 package resources
 
 import (
+	"github.com/HorizontDimension/n2b/form.n2b.pt/server/afr"
 	"github.com/HorizontDimension/n2b/form.n2b.pt/server/models"
 	"github.com/emicklei/go-restful"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
+
+	"reflect"
 
 	"bytes"
 	"log"
@@ -51,12 +54,18 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 			Nif:  form.Get("OldNif"),
 		},
 		NewAgent: models.Agent{
-			Name: form.Get("OldName"),
-			Nif:  form.Get("OldNif"),
+			Name: form.Get("NewName"),
+			Nif:  form.Get("NewNif"),
 		},
 	}
 
-	atr.Validate()
+	log.Println(atr, form)
+	errors := atr.Validate()
+	if !reflect.DeepEqual(errors, afr.New()) {
+		log.Println("we got errors")
+		response.WriteAsJson(errors)
+		return
+	}
 
 	_, fileheader, err := request.Request.FormFile("file")
 

@@ -32,4 +32,6 @@ form.n2b.pt/client/node_modules
 form.n2b.pt/client/test
 form.n2b.pt/client/.idea
 form.n2b.pt/client/.DS_Store
+form.n2b.pt/server/server
+form.n2b.pt/server/errorlog.txt
 

@@ -27,7 +27,12 @@ angular.module('myApp.controllers', [])
 
     }])
     .controller('MyCtrl2', ['$scope','Transfers','$fileUploader',  function ($scope, Transfers,$fileUploader) {
+        $scope.submitted = false;
+
+
+
         $scope.agent = {};
+        $scope.success= "";
 
 
 
@@ -88,10 +93,17 @@ angular.module('myApp.controllers', [])
 
         uploader.bind('error', function (event, xhr, item, response) {
             console.info('Error', xhr, item, response);
+            $scope.errors=response;
         });
 
         uploader.bind('complete', function (event, xhr, item, response) {
             console.info('Complete', xhr, item, response);
+            $scope.errors=response;
+           if (response==""){
+               $scope.success="sucesso"
+           }
+
+
         });
 
         uploader.bind('progressall', function (event, progress) {
@@ -103,7 +115,19 @@ angular.module('myApp.controllers', [])
         });
 
 
+        $scope.submit=function(){
+            console.log("submited")
 
+            if ($scope.Transfer.$valid) {
+                // Submit as normal
+               $scope.uploader.uploadAll()
+            }
+            else {
+                console.log("we got errors")
+                console.log($scope.Transfer)
+                $scope.submitted = true;
+            }
+        }
 
 
 

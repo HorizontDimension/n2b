@@ -1,13 +1,22 @@
 package resources
 
 import (
+	"bytes"
 	"github.com/HorizontDimension/n2b/form.n2b.pt/server/models"
 	"github.com/emicklei/go-restful"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
+	"log"
+	"net/smtp"
+
+	"text/template"
+
+	"github.com/jordan-wright/email"
 )
 
-type UpgradeAgentResource struct{}
+type UpgradeAgentResource struct {
+	Session *mgo.Session
+}
 
 func (t *UpgradeAgentResource) Register(container *restful.Container) {
 	ws := new(restful.WebService)
@@ -62,7 +71,7 @@ func (t *UpgradeAgentResource) UpgradeAgent(request *restful.Request, response *
 	template := template.Must(template.New("upgrade").Parse(TransferAgentTemplate))
 
 	buf := new(bytes.Buffer)
-	err = template.Execute(buf, atr)
+	err = template.Execute(buf, aur)
 	if err != nil {
 		log.Println(err)
 	}

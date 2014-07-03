@@ -1,6 +1,7 @@
 package models
 
 import (
+	"github.com/HorizontDimension/n2b/form.n2b.pt/server/afr"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
 	"log"
@@ -40,6 +41,23 @@ func (a *AgentTransferRequest) Save(s *mgo.Session) error {
 	return nil
 }
 
-func (a *AgentTransferRequest) Validate() {
-
+func (a *AgentTransferRequest) Validate() afr.Errors {
+	errors := afr.New()
+	log.Println(a)
+	if a.OldAgent.Name == "" {
+		errors.Set("EmptyOldAgentName", "Agent name cant be empty")
+	}
+	if a.OldAgent.Nif == "" {
+		errors.Set("EmptyOldAgentNif", "Agent nif cant be empty")
+	}
+	if a.NewAgent.Name == "" {
+		errors.Set("EmptyNewAgentName", "Agent name cant be empty")
+	}
+	if a.NewAgent.Nif == "" {
+		errors.Set("EmptyNewAgentNif", "Agent nif cant be empty")
+	}
+	if a.Hardlock == "" {
+		errors.Set("EmptyHardlock", "Hardlock cant be empty")
+	}
+	return errors
 }
