@@ -3,6 +3,7 @@ package resources
 import (
 	"github.com/HorizontDimension/n2b/form.n2b.pt/server/afr"
 	"github.com/HorizontDimension/n2b/form.n2b.pt/server/models"
+	"github.com/dim13/captcha"
 	"github.com/emicklei/go-restful"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
@@ -16,6 +17,13 @@ import (
 
 	"github.com/jordan-wright/email"
 )
+
+var cc = captcha.New("6LeXNPYSAAAAAFIhpW9h9SPs2hdvtnxra1BTrLBM", "6LeXNPYSAAAAANLRtA59ih3d-vCi4XTZNQlPtoYe")
+
+type Captcha struct {
+	Challenge string
+	Response  string
+}
 
 type TransferAgentResource struct {
 	Session *mgo.Session
@@ -59,12 +67,30 @@ func (t *TransferAgentResource) TransferAgent(request *restful.Request, response
 		},
 	}
 
-	log.Println(atr, form)
 	errors := atr.Validate()
 	if !reflect.DeepEqual(errors, afr.New()) {
 		log.Println("we got errors")
 		response.WriteAsJson(errors)
 		return
+	}
+
+	if form.Get("response") == "" {
+		errors.Set("InvalidCaptcha", "invalid Captcha")
+		response.WriteAsJson(errors)
+		return
+	}
+
+	challenge := form.Get("challenge")
+	resp := form.Get("response")
+	if challenge != "" && resp != "" {
+		if ok, err := cc.Verify(request.Request.RemoteAddr, challenge, resp); ok {
+			log.Println("valid", challenge)
+
+		} else {
+			errors.Set("InvalidCaptcha", err.Error())
+			response.WriteAsJson(errors)
+			return
+		}
 	}
 
 	_, fileheader, err := request.Request.FormFile("file")

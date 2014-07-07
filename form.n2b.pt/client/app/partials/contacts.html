@@ -1,4 +1,4 @@
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" name="Contact" qn-validate="errors"  ng-submit="submit()" novalidate>
     <div class="box col-sm-12">
         <div class="form-group">
             <div class="col-sm-12">
@@ -8,26 +8,42 @@
         <div class="form-group">
             <label for="username" class="col-sm-3 control-label">Nome</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="username" placeholder="Nome">
+                <input type="text" class="form-control" id="username" ng-model="contact.Name" name="Name" placeholder="Nome" required>
+                <small class="validation-error" ng-show="Contact.Name.$invalid && Contact.Name.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Contact.$serverError.EmptyContactName.$invalid">Campo obrigatório</small>
             </div>
         </div>
         <div class="form-group">
             <label for="userphone" class="col-sm-3 control-label">Telefone / Telemóvel</label>
             <div class="col-sm-2">
-                <input type="tel" class="form-control" id="userphone" placeholder="Telefone / Telemóvel">
+                <input type="tel" class="form-control" id="userphone" name="Tel" ng-model="contact.Tel" placeholder="Telefone / Telemóvel" required>
+                <small class="validation-error" ng-show="Contact.Tel.$invalid && Contact.Tel.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Contact.$serverError.EmptyContactTel.$invalid">Campo obrigatório</small>
             </div>
         </div>
         <div class="form-group">
-            <label for="useremail" class="col-sm-3 control-label">Nome</label>
+            <label for="useremail" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="useremail" placeholder="Email">
+                <input type="text" class="form-control" id="useremail" placeholder="Email" name="Email" ng-model="contact.Email" required>
+                <small class="validation-error" ng-show="Contact.Email.$invalid && Contact.Email.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Contact.$serverError.EmptyContactEmail.$invalid">Campo obrigatório</small>
             </div>
         </div>
         <div class="form-group">
             <label for="usermessage" class="col-sm-3 control-label">Mensagem</label>
             <div class="col-sm-8">
-                <textarea class="form-control" rows="3" id="usermessage" placeholder="Mensagem"></textarea>
+                <textarea class="form-control" rows="3" id="usermessage" placeholder="Mensagem" name="Message" ng-model="contact.Message" required></textarea>
+                <small class="validation-error" ng-show="Contact.Message.$invalid && Contact.Message.$error.required && submitted">Campo obrigatório</small>
+                <small class="validation-error" ng-show="Contact.$serverError.EmptyContactMessage.$invalid">Campo obrigatório</small>
             </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-3 control-label">Validação</label>
+            <div class="col-sm-8">
+                <div vc-recaptcha ng-model="contact.captcha"  key="'6LeXNPYSAAAAANLRtA59ih3d-vCi4XTZNQlPtoYe'"></div>
+                <small class="validation-error" ng-show="Contact.$serverError.InvalidCaptcha.$invalid">Captcha Inválido</small>
+            </div>
+
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-10">

@@ -15,17 +15,18 @@ func main() {
 	}
 	defer session.Close()
 	wsContainer := restful.NewContainer()
+	contacts := &resources.ContactFormResource{session}
 	ta := &resources.TransferAgentResource{session}
-	ua := &resources.UpgradeAgentResource{}
+	ua := &resources.UpgradeAgentResource{session}
 	files := &resources.File{session}
-
+	contacts.Register(wsContainer)
 	ta.Register(wsContainer)
 	ua.Register(wsContainer)
 	files.Register(wsContainer)
 
 	cors := restful.CrossOriginResourceSharing{
 		ExposeHeaders:  []string{"X-N2B"},
-		AllowedHeaders: []string{"Content-Type"},
+		AllowedHeaders: []string{"Content-Type", "accept"},
 		CookiesAllowed: false,
 		Container:      wsContainer}
 	wsContainer.Filter(cors.Filter)

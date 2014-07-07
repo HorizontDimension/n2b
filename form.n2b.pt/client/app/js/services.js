@@ -15,4 +15,13 @@ angular.module('myApp.services', []).
             }
         });
         return resource;
+    }).factory('Contacts', function($resource){
+        var resource = $resource('http://localhost:8080/contacts/new',{},{
+            new:{
+                method:"POST",
+                isArray:true
+               // headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+            }
+        });
+        return resource;
     });

@@ -2,12 +2,14 @@ package resources
 
 import (
 	"bytes"
+	"github.com/HorizontDimension/n2b/form.n2b.pt/server/afr"
 	"github.com/HorizontDimension/n2b/form.n2b.pt/server/models"
 	"github.com/emicklei/go-restful"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
 	"log"
 	"net/smtp"
+	"reflect"
 
 	"text/template"
 
@@ -52,7 +54,31 @@ func (t *UpgradeAgentResource) UpgradeAgent(request *restful.Request, response *
 		},
 	}
 
-	aur.Validate()
+	errors := aur.Validate()
+	if !reflect.DeepEqual(errors, afr.New()) {
+		log.Println("we got errors")
+		response.WriteAsJson(errors)
+		return
+	}
+
+	if form.Get("response") == "" {
+		errors.Set("InvalidCaptcha", "invalid Captcha")
+		response.WriteAsJson(errors)
+		return
+	}
+
+	challenge := form.Get("challenge")
+	resp := form.Get("response")
+	if challenge != "" && resp != "" {
+		if ok, err := cc.Verify(request.Request.RemoteAddr, challenge, resp); ok {
+			log.Println("valid", challenge)
+
+		} else {
+			errors.Set("InvalidCaptcha", err.Error())
+			response.WriteAsJson(errors)
+			return
+		}
+	}
 
 	_, fileheader, err := request.Request.FormFile("file")
 
@@ -68,7 +94,7 @@ func (t *UpgradeAgentResource) UpgradeAgent(request *restful.Request, response *
 	aur.Save(t.Session)
 
 	// Create a new template and parse the letter into it.
-	template := template.Must(template.New("upgrade").Parse(TransferAgentTemplate))
+	template := template.Must(template.New("upgrade").Parse(upgradeAgentTemplate))
 
 	buf := new(bytes.Buffer)
 	err = template.Execute(buf, aur)
