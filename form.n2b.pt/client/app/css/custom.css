@@ -105,6 +105,24 @@ label{
         display: inline !important;
     }
 
+    body{
+        background: url("/img/navy_blue.png") repeat;
+        padding-top: 60px;
+    }
+
+    .box{
+        border-radius: 0;
+        border: none;
+        background: none;
+        padding-left: -15px !important;
+        padding-right: -15px !important;
+    }
+
+    .container{
+        padding-bottom: 20px !important;
+        padding-top: 0 !important;
+    }
+
 }
 
 @media (max-width: 318px) {
